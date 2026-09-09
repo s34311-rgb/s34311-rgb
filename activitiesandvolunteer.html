@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>กิจกรรมและจิตอาสา - Sorawit Komon</title>
+    <style>
+        body {
+            background-color: #dcedc8;
+            color: #4e342e;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        .item-card {
+            background-color: rgba(255, 255, 255, 0.4);
+            border: 1px solid #4e342e;
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: left;
+            padding: 15px;
+        }
+        .item-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+        .item-title {
+            font-size: 1.2rem;
+            margin: 10px 0 5px 0;
+            font-weight: bold;
+        }
+        .item-desc {
+            font-size: 1rem;
+            margin: 0;
+            line-height: 1.4;
+        }
+        .back-btn {
+            margin-top: 40px;
+            display: inline-block;
+            background-color: #4e342e;
+            color: #dcedc8;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>กิจกรรมและจิตอาสาของผม</h1>
+        
+        <div class="gallery">
+            
+            <!-- ==================================================
+                 FORMAT สำหรับเพิ่มกิจกรรม (สามารถ Copy บล็อกนี้ไปวางต่อกันได้เลย)
+                 ================================================== -->
+            <div class="item-card">
+                <!-- ใส่ที่อยู่รูปภาพในช่อง src -->
+                <img src="path_to_activity_image1.jpg" alt="รูปกิจกรรม" class="item-img" onerror="this.src='https://placehold.co'">
+                <!-- ใส่ชื่อกิจกรรม/ข้อความด้านล่าง -->
+                <div class="item-title">ชื่อกิจกรรมที่ 1</div>
+                <div class="item-desc">รายละเอียดหรือข้อความอธิบายเกี่ยวกับกิจกรรมที่ได้ทำ</div>
+            </div>
+            <!-- ================================================== -->
+
+            <div class="item-card">
+                <img src="path_to_activity_image2.jpg" alt="รูปกิจกรรม" class="item-img" onerror="this.src='https://placehold.co'">
+                <div class="item-title">ชื่อกิจกรรมที่ 2</div>
+                <div class="item-desc">รายละเอียดหรือข้อความอธิบายเกี่ยวกับกิจกรรมที่ได้ทำ</div>
+            </div>
+
+        </div>
+
+        <a href="index.html" class="back-btn">กลับหน้าแรก</a>
+    </div>
+
+</body>
+</html>
