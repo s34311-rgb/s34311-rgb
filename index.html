@@ -1,55 +1,227 @@
-<!-- นี่คือโครงสร้างหน้าเว็บทั้งหมด -->
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio - Sorawit Komon</title>
-<style>
-body {
-  background-color: #dcedc8; 
-  color: #4e342e; 
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, ssans-serif; 
-  margin: 0; 
-  display: flex; flex-direction: column; 
-  justify-content: center; 
-  align-items: center; 
-  min-height:: 100vh; text-align: center; 
-  padding: 20px; 
-  box-sizing: border-box;
-}
-.container {max-width: 500px;} 
-h1 {font-size: 2.5rem; margin-bottom: 10px;}
-p {font-size: 1.2rem; line-height: 1.6; margin: 8px 0;}
-.contact-info {margin-top: 20px; fontweight: bold;}
-.btn-group {display: flex; gap: 15px; margin-top: 30px; justify-content: center; flex-wrap: wrap;}
-.btn {
-  background-color: #4e342e; 
-  color: #dcedc8; 
-  text-decoration: none; 
-  padding: 12px 24px; 
-  border-radius: 8px:
-  font-size: 1.1rem;
-  font-weight: bold;
-  transition: opacity 0.2s;
-}
-  .btn:hover {opacity: 0.9;}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorawit Komon - Portfolio</title>
+    <!-- นำเข้าฟอนต์สไตล์โมเดิร์น ตรงเหลี่ยม คมชัด (ฟอนต์ UI แนนโน๊ะ) -->
+    <link href="https://googleapis.com" rel="stylesheet">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            /* ใส่รูปพื้นหลังและใช้สีทึบธรรมดา ไม่ใช้เอฟเฟกต์กระจกเบลอ */
+            background: linear-gradient(rgba(10, 15, 10, 0.5), rgba(5, 8, 5, 0.6)), url('your-background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #ffffff;
+            font-family: 'Prompt', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* โครงสร้างหน้าจอหลัก จัดวางตําแหน่งตามรูปเป๊ะๆ */
+        .portfolio-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            position: relative;
+        }
+
+        /* ================= ฝั่งซ้าย (ชื่อ, รูปโปรไฟล์, กล่องข้อความเฉียง) ================= */
+        .left-side {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .name-wrapper {
+            margin-bottom: 25px;
+            padding-left: 20px;
+        }
+
+        .name-th {
+            font-family: 'Mitr', sans-serif;
+            font-size: 1.8rem;
+            color: #ffffff;
+            font-weight: 400;
+        }
+
+        .name-en {
+            font-family: 'Prompt', sans-serif;
+            font-size: 1.2rem;
+            color: #a5d6a7;
+            font-weight: 400;
+        }
+
+        .profile-img {
+            width: 240px;
+            height: 320px;
+            object-fit: cover;
+            border: 2px solid #ffffff;
+            margin-left: 20px;
+            margin-bottom: -40px; /* ให้รูปเกยทับกล่องข้อความสีดำด้านล่าง */
+            z-index: 2;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+        }
+
+        /* กล่องข้อความคติประจำใจทรงสี่เหลี่ยมคางหมูเฉียงตามรูปต้นฉบับ */
+        .quote-polygon {
+            background: #111611; /* สีดำทึบ */
+            border: 1px solid #223022;
+            padding: 60px 30px 30px 30px;
+            width: 100%;
+            max-width: 520px;
+            z-index: 1;
+            clip-path: polygon(0 0, 85% 0, 100% 100%, 0% 100%); /* ตัดขอบเฉียงขวา */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .quote-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #e0e0e0;
+            text-align: left;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+
+        .quote-credit {
+            font-size: 0.8rem;
+            color: #81c784;
+            text-align: right;
+            font-weight: 400;
+        }
+
+        /* ================= ฝั่งขวา (เมนูปุ่มกดสีทึบ) ================= */
+        .right-side {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            justify-content: center;
+            padding-top: 60px;
+        }
+
+        /* ดีไซน์กล่องปุ่มกดทึบเหลี่ยมคมตามรูป */
+        .menu-button {
+            display: block;
+            background: #111611; /* สีดำทึบ */
+            border: 1px solid #223022;
+            padding: 16px 40px;
+            border-radius: 4px; /* เหลี่ยมคม */
+            color: #ffffff;
+            text-decoration: none;
+            font-family: 'Mitr', sans-serif;
+            font-size: 1.2rem;
+            text-align: center;
+            width: 100%;
+            max-width: 380px;
+            align-self: flex-end; /* ชิดขวา */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            transition: all 0.2s ease-in-out;
+        }
+
+        /* เอฟเฟกต์เปลี่ยนเป็นสีเขียวทึบดุดันตอน Hover */
+        .menu-button:hover {
+            background: #4CAF50;
+            border-color: #4CAF50;
+            color: #050805;
+            transform: translateX(-5px);
+        }
+
+        /* ข้อมูลการติดต่อที่มุมขวาล่าง */
+        .contact-footer {
+            margin-top: 40px;
+            text-align: right;
+            align-self: flex-end;
+            font-weight: 300;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .contact-footer p {
+            margin-bottom: 4px;
+            color: #cfd8dc;
+        }
+
+        .contact-footer a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .contact-footer a:hover {
+            color: #81c784;
+            text-decoration: underline;
+        }
+
+        /* Responsive สำหรับเปิดบนคอมพิวเตอร์แบ่งซ้ายขวาเป๊ะๆ */
+        @media (min-width: 900px) {
+            .portfolio-container {
+                grid-template-columns: 1fr 1fr;
+                min-height: 85vh;
+                align-items: center;
+            }
+            .right-side {
+                padding-top: 0;
+            }
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-<h1>ผมชื่อ นายสรวิศ โกมล (Sorawit Komon)</h1>
-<p>ชื่อเล่น มันนี่</p>
-<p>กำลังศึกษาในชั้นมัธยมศึกษาปีที่ 6</p>
-<p>มีความสนใจที่จะเข้าเรียนคณะเภสัชศาสตร์ สาขาบริบาล</p>
-<div class="contact-info">
-  <p>เบอร์โทร : 0909014985</p>
-  <p>อีเมล์ : s34311@banbung.ac.th</p>
-</div>
-<div class="btn-group">
-  <a href="profile.html" class="btn">ประวัติการเรียน</a>
-  <a href="activitiesandvolunteer.html class="btn">กิจกรรมและจิตอาสา</a>
-</div>
-</div>
+
+    <div class="portfolio-container">
+        
+        <!-- โครงสร้างฝั่งซ้าย -->
+        <div class="left-side">
+            <div class="name-wrapper">
+                <div class="name-th">นายสรวิศ กมน (มันนี่)</div>
+                <div class="name-en">Mr. Sorawit Komon</div>
+            </div>
+            
+            <!-- เปลี่ยน 'profile.jpg' เป็นไฟล์รูปถ่ายของคุณ -->
+            <img src="profile.jpg" alt="Sorawit Komon" class="profile-img">
+            
+            <div class="quote-polygon">
+                <p class="quote-text">
+                    "ตราบที่ดวงวิญญาณทั้งในยังมีแรงให้ใช้ ตราบที่เจ้าดวงใจเชื่อในทางที่เคยได้เลือก หากสุดท้ายเส้นชัยคือความฝันและรางวัลการได้ทำมัน ฉันได้รับมันแล้วทุกวันทั้งความหมายที่ฉันต้องทำ จะแพ้กี่ครั้งก็ไม่เป็นไร"
+                </p>
+                <p class="quote-credit">จาก เพลง (เส้นชัยของคนแพ้) โดย Pat-T (พัทธวัชร์ พัศดลอนันต์)</p>
+            </div>
+        </div>
+
+        <!-- โครงสร้างฝั่งขวา -->
+        <div class="right-side">
+            
+            <!-- ปุ่มที่ 1: เป้าหมายและความฝัน -->
+            <!-- ใส่ URL เว็บไซต์ที่ต้องการลิงก์ไปใน href=" " ได้เลยครับ -->
+            <a href="#" target="_blank" class="menu-button">เป้าหมาย & ความฝัน</a>
+
+            <!-- ปุ่มที่ 2: ข้อมูลส่วนตัว -->
+            <a href="#" target="_blank" class="menu-button">ข้อมูลส่วนตัว</a>
+
+            <!-- ปุ่มที่ 3: ผลการเรียน -->
+            <a href="#" target="_blank" class="menu-button">ผลการเรียน</a>
+
+            <!-- ปุ่มที่ 4: กิจกรรมและผลงาน -->
+            <a href="#" target="_blank" class="menu-button">กิจกรรม & ผลงาน</a>
+
+            <!-- ช่องทางติดต่อมุมขวาล่างตามรูปภาพ -->
+            <div class="contact-footer">
+                <p>อีเมลโรงเรียน: <a href="mailto:534311@banbung.ac.th">534311@banbung.ac.th</a></p>
+                <p>อีเมลส่วนตัว: <a href="mailto:sorawitkomon30234@gmail.com">sorawitkomon30234@gmail.com</a></p>
+                <p>เบอร์โทรศัพท์: <a href="tel:090-9014985">090-901-4985</a></p>
+            </div>
+        </div>
+
+    </div>
+
 </body>
 </html>
